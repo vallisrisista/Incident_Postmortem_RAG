@@ -1,0 +1,450 @@
+[
+  {
+    "id": "eaa38fc3c0f8",
+    "company": "Allegro",
+    "url": "https://allegro.tech/2018/08/postmortem-why-allegro-went-down.html",
+    "category": "Config Errors",
+    "description": "E-commerce site went down after a sudden traffic spike caused by a marketing campaign. The outage was caused by a configuration error in cluster resource management which prevented more service instances from starting even though hardware resources were available."
+  },
+  {
+    "id": "bce133b93828",
+    "company": "Amazon",
+    "url": "https://aws.amazon.com/message/74876-2/",
+    "category": "Config Errors",
+    "description": "A configuration change in the Seoul region incorrectly removed the setting that specifies the minimum healthy hosts for the EC2 DNS resolver fleet, so the system fell back to a very low default. The fleet's healthy host count dropped and in-VPC DNS queries from EC2 instances failed for ~84 minutes until capacity was manually restored. AWS added semantic config validation and per-hour throttling on host removal as remediations."
+  },
+  {
+    "id": "b51464122ab4",
+    "company": "CircleCI",
+    "url": "https://discuss.circleci.com/t/incident-report-november-8-2021-jobs-stuck-in-a-not-running-state/41890",
+    "category": "Config Errors",
+    "description": "A deploy changed the type of a field in the PostgreSQL database used by the job-distribution service. Newly-written rows used the new type and old rows used the old type, so the distributor's strict schema validation failed on each scan and it stopped distributing work."
+  },
+  {
+    "id": "a2a1d913a6a0",
+    "company": "Cloudflare",
+    "url": "https://blog.cloudflare.com/18-november-2025-outage/",
+    "category": "Config Errors",
+    "description": "On 18 Nov. 2025, a change in permissions in a database in Cloudflare's bot-detection systems caused a file to be output that exceeded the limits of the software that runs that system. That file was propagated throughout Cloudflare's network, causing a systemwide outage."
+  },
+  {
+    "id": "74590d8645b8",
+    "company": "Datadog",
+    "url": "https://www.datadoghq.com/blog/2020-09-25-infrastructure-connectivity-issue/",
+    "category": "Config Errors",
+    "description": "A bad service discovery config in one of the clients brought down service discovery globally when a dependent client went down."
+  },
+  {
+    "id": "a54d7767497a",
+    "company": "GitHub",
+    "url": "https://github.blog/news-insights/company-news/github-availability-report-august-2024/",
+    "category": "Config Errors",
+    "description": "A configuration change rolled out to GitHub.com databases broke the way hosts answered routing-service health-check pings, so the production read-only endpoint was marked unhealthy and inaccessible."
+  },
+  {
+    "id": "3a87b9b1d0f7",
+    "company": "Google",
+    "url": "https://status.cloud.google.com/incident/storage/19002",
+    "category": "Config Errors",
+    "description": "A configuration change intended to address an uptick in demand for metadata storage overloaded part of the blob lookup system, causing a cascading failure with user-visible service impact to Gmail, Google Photos, Google Drive."
+  },
+  {
+    "id": "95138d5bb651",
+    "company": "Heroku",
+    "url": "https://status.heroku.com/incidents/1091",
+    "category": "Config Errors",
+    "description": "An automated remote configuration change did not propagate fully. Web dynos could not be started."
+  },
+  {
+    "id": "72d4feb2b782",
+    "company": "PagerDuty",
+    "url": "https://status.pagerduty.com/incidents/vbp7ht2647l8",
+    "category": "Config Errors",
+    "description": "PagerDuty deployed a DNS configuration change that impacted their container orchestration cluster, causing all services running there to be unable to resolve DNS."
+  },
+  {
+    "id": "2007d5f10684",
+    "company": "Razorpay",
+    "url": "https://web.archive.org/web/20250207075402/https://razorpay.com/blog/day-of-rds-multi-az-failover/",
+    "category": "Config Errors",
+    "description": "A RDS hardware failure highlighted an incorrect MySQL configuration which resulted in major data loss in a financial system."
+  },
+  {
+    "id": "67178eb044ee",
+    "company": "Amazon",
+    "url": "https://aws.amazon.com/message/2329B7/",
+    "category": "Hardware/Power Failures",
+    "description": "An unknown event caused a transformer to fail, and a PLC checking generator phase alignment failed, preventing backup generators from coming online, affecting EC2, EBS, RDS in EU West."
+  },
+  {
+    "id": "6e9363e9c8d5",
+    "company": "Amazon",
+    "url": "https://aws.amazon.com/message/56489/",
+    "category": "Hardware/Power Failures",
+    "description": "A bug in third-party datacenter control system code caused excessive interactions during a control-host failover, making the cooling control system unresponsive, causing EC2 servers to overheat and power off."
+  },
+  {
+    "id": "061f2e369996",
+    "company": "Cloudflare",
+    "url": "https://web.archive.org/web/20211015231917/https://blog.cloudflare.com/a-byzantine-failure-in-the-real-world/",
+    "category": "Hardware/Power Failures",
+    "description": "A partial switch misbehavior caused a cascading Byzantine failure which impacted API and dashboard availability for six hours 33 minutes."
+  },
+  {
+    "id": "897903de2ce7",
+    "company": "GitHub",
+    "url": "https://github.com/blog/2106-january-28th-incident-report",
+    "category": "Hardware/Power Failures",
+    "description": "GitHub experienced a disruption in the power at their primary datacenter."
+  },
+  {
+    "id": "e0070fdc39b8",
+    "company": "Google",
+    "url": "https://status.cloud.google.com/incidents/fmEL9i2fArADKawkZAa2",
+    "category": "Hardware/Power Failures",
+    "description": "A simultaneous failure of multiple redundant cooling systems in a datacenter impacted multiple Google Cloud services, causing customers to experience service unavailability."
+  },
+  {
+    "id": "a7441bf5e72f",
+    "company": "Amazon",
+    "url": "https://aws.amazon.com/message/101925/",
+    "category": "Conflicts",
+    "description": "A latent race condition in DynamoDB's DNS management left the regional endpoint with an empty record, cascading into EC2, Network Load Balancer, and Lambda for ~15 hours."
+  },
+  {
+    "id": "d36b669cdbe6",
+    "company": "GitHub",
+    "url": "https://github.blog/news-insights/the-library/downtime-last-saturday/",
+    "category": "Conflicts",
+    "description": "During a switch upgrade, an MLAG failover froze the network briefly, causing fileserver Pacemaker/Heartbeat/DRBD pairs to STONITH each other, leaving many pairs with both nodes powered off; recovery took over 5 hours."
+  },
+  {
+    "id": "ec4ce24fd285",
+    "company": "GitHub",
+    "url": "https://blog.github.com/2018-10-30-oct21-post-incident-analysis/",
+    "category": "Conflicts",
+    "description": "A 43 second network partition during maintenance caused MySQL master failover, but the new master didn't have several seconds of writes propagated to it due to cross-continent latency, requiring 24+ hours of restoration work."
+  },
+  {
+    "id": "6b198b63f3d7",
+    "company": "Knight Capital",
+    "url": "https://dougseven.com/2014/04/17/knightmare-a-devops-cautionary-tale/",
+    "category": "Conflicts",
+    "description": "A combination of conflicting deployed versions and re-using a previously used flag bit caused a $460M trading loss."
+  },
+  {
+    "id": "af5721579948",
+    "company": "incident.io",
+    "url": "https://incident.io/blog/one-two-skip-a-few",
+    "category": "Conflicts",
+    "description": "Customers noticed per-organization IDs jumping by 32 after a Postgres HA upgrade promoted a follower to primary, due to sequence pre-allocation behavior."
+  },
+  {
+    "id": "3ac74c8b957a",
+    "company": "Azure",
+    "url": "https://azure.microsoft.com/en-us/blog/summary-of-windows-azure-service-disruption-on-feb-29th-2012/",
+    "category": "Time",
+    "description": "Certificates valid for one year were computed as current date plus one year; on Feb 29 2012 this created certificates expiring Feb 29 2013, which were rejected as invalid, causing an Azure global outage lasting most of a day."
+  },
+  {
+    "id": "f2e763da04f0",
+    "company": "Cloudflare",
+    "url": "https://web.archive.org/web/20211104160742/https://blog.cloudflare.com/how-and-why-the-leap-second-affected-cloudflare-dns/",
+    "category": "Time",
+    "description": "Backwards time flow from tracking a leap second caused weighted round-robin DNS resolver selection to panic and fail on some CNAME lookups."
+  },
+  {
+    "id": "e12d00a83dfc",
+    "company": "Mozilla",
+    "url": "https://web.archive.org/web/20250303152906/https://hacks.mozilla.org/2019/07/add-ons-outage-post-mortem-result/",
+    "category": "Time",
+    "description": "Most Firefox add-ons stopped working when a certificate expired, disabling about 15,000 add-ons; recovery took 15-21 hours for most users."
+  },
+  {
+    "id": "9240643d2aeb",
+    "company": "CircleCI",
+    "url": "https://status.circleci.com/incidents/8rklh3qqckp1",
+    "category": "Database",
+    "description": "At peak load, the primary database backed up with queued operations until it stopped catching up; a primary failover only bought temporary headroom, and CircleCI rebuilt tooling on the fly to clear a 17-hour backlog."
+  },
+  {
+    "id": "1d6c07a2aa98",
+    "company": "GitHub",
+    "url": "https://github.blog/news-insights/company-news/github-availability-report-may-2021/",
+    "category": "Database",
+    "description": "A foreign key on the scoped-tokens table hit max INT32, causing high failure rates for Actions and Pages and breaking scoped-token Git operations for 9h48m; mitigation required a long-running schema migration to INT64."
+  },
+  {
+    "id": "8e10f4cc0977",
+    "company": "GitHub",
+    "url": "https://github.blog/2021-12-01-github-availability-report-november-2021/",
+    "category": "Database",
+    "description": "During the final rename step of a schema migration, a significant portion of MySQL read replicas entered a semaphore deadlock and crash-recovery, leaving too few healthy replicas to handle production reads."
+  },
+  {
+    "id": "b190d020ff51",
+    "company": "Heroku",
+    "url": "https://status.heroku.com/incidents/2558",
+    "category": "Database",
+    "description": "A foreign key used a smaller data type than the primary key it referenced, causing an overflow when the primary key exceeded the allowable value, preventing new authorizations and deployments."
+  },
+  {
+    "id": "5693dd48d1df",
+    "company": "incident.io",
+    "url": "https://status.incident.io/incidents/01JRDFKAGE07YYDY0KZR137BX3/write-up",
+    "category": "Database",
+    "description": "After a Postgres 17 upgrade, PGAudit was re-enabled based on staging testing; a routine migration triggered a pathological interaction where the extension hung holding critical locks and ignored timeout signals, blocking operations across the dashboard, mobile app, and API."
+  },
+  {
+    "id": "e49eb2bce070",
+    "company": "Amazon",
+    "url": "https://aws.amazon.com/message/41926/",
+    "category": "Operational/Human Error",
+    "description": "During debugging, a command intended to remove a small number of servers was issued with a typo, removing a much larger set that supported critical S3 systems, causing widespread outages across dependent AWS services."
+  },
+  {
+    "id": "bd22739494b0",
+    "company": "Cloudflare",
+    "url": "https://web.archive.org/web/20211029020126/https://blog.cloudflare.com/incident-report-on-memory-leak-caused-by-cloudflare-parser-bug/",
+    "category": "Security",
+    "description": "A parser bug caused Cloudflare edge servers to return memory that contained private information such as HTTP cookies, authentication tokens, and HTTP POST bodies."
+  },
+  {
+    "id": "55c51e75f787",
+    "company": "Cloudflare",
+    "url": "https://web.archive.org/web/20211006055154/https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/",
+    "category": "Operational/Human Error",
+    "description": "CPU exhaustion was caused by a single WAF rule with a poorly written regular expression causing excessive backtracking, leading to a global 27 minute downtime."
+  },
+  {
+    "id": "ae544c4fec19",
+    "company": "CrowdStrike",
+    "url": "https://www.crowdstrike.com/falcon-content-update-remediation-and-guidance-hub/",
+    "category": "Operational/Human Error",
+    "description": "A content update containing undetected errors was deployed due to a bug in the deployment validator, causing an out-of-bounds memory read and a Windows crash on 8.5 million machines."
+  },
+  {
+    "id": "5f0e43053cf1",
+    "company": "Discord",
+    "url": "https://status.discordapp.com/incidents/qk9cdgnqnhcn",
+    "category": "Operational/Human Error",
+    "description": "A Redis instance was migrated automatically by the cloud platform, causing it to incorrectly drop offline and forcing a cluster rebalance that triggered a cascading failure through Discord's real-time system, requiring a full service restart."
+  },
+  {
+    "id": "f962a1878a6c",
+    "company": "Gitlab",
+    "url": "https://about.gitlab.com/2017/02/10/postmortem-of-database-outage-of-january-31/",
+    "category": "Database",
+    "description": "An influx of requests overloaded the database, causing replication to lag; a tired admin then deleted the wrong directory, losing six hours of data."
+  },
+  {
+    "id": "2e2955aab2c5",
+    "company": "Reddit",
+    "url": "https://web.archive.org/web/20230727225235/https://www.reddit.com/r/RedditEng/comments/11xx5o0/you_broke_reddit_the_piday_outage/",
+    "category": "Networking",
+    "description": "A critical Kubernetes cluster upgrade failed because node metadata changed between versions, bringing down workload networking for over 5 hours."
+  },
+  {
+    "id": "78e6ca0bf459",
+    "company": "Slack",
+    "url": "https://web.archive.org/web/20181208123409/https://slackhq.com/this-was-not-normal-really",
+    "category": "Database",
+    "description": "A combination of factors caused a large number of users to be disconnected; the mass reconnection attempt exceeded database capacity and caused cascading connection failures for up to 2 hours."
+  },
+  {
+    "id": "5ec95c3923e8",
+    "company": "Stripe",
+    "url": "https://support.stripe.com/questions/outage-postmortem-2015-10-08-utc",
+    "category": "Database",
+    "description": "A manual database operation was performed incorrectly, missing a dependency, causing the Stripe API to go down for 90 minutes."
+  },
+  {
+    "id": "e07352c30eab",
+    "company": "Twilio",
+    "url": "https://www.twilio.com/blog/2013/07/billing-incident-post-mortem-breakdown-analysis-and-root-cause.html",
+    "category": "Networking",
+    "description": "A temporary network partition in the Redis cluster used for billing caused a massive resynchronization; the overloaded master crashed and restarted read-only, and the auto-recharge system retried repeatedly, resulting in multiple duplicate charges to customers."
+  },
+  {
+    "id": "da690e34e5ea",
+    "company": "GitHub",
+    "url": "https://githubengineering.com/ddos-incident-report/",
+    "category": "Security",
+    "description": "GitHub experienced a DDoS attack, hitting the website with 1.35Tbps of traffic."
+  },
+  {
+    "id": "53c0b48773fb",
+    "company": "Elastic",
+    "url": "https://www.elastic.co/blog/elastic-cloud-january-18-2019-incident-report",
+    "category": "Operational/Human Error",
+    "description": "Elastic Cloud customers with deployments in the AWS eu-west-1 region experienced severely degraded access to their clusters for roughly 3 hours, including a 20 minute period of complete unavailability."
+  },
+  {
+    "id": "6d10b857eb07",
+    "company": "Fastly",
+    "url": "https://www.fastly.com/blog/summary-of-june-8-outage",
+    "category": "Config Errors",
+    "description": "A global outage occurred due to an undiscovered software bug that surfaced when it was triggered by a valid customer configuration change."
+  },
+  {
+    "id": "e11d18464536",
+    "company": "Honeycomb",
+    "url": "https://www.honeycomb.io/blog/incident-review-what-comes-up-must-first-go-down/",
+    "category": "Operational/Human Error",
+    "description": "Honeycomb experienced a total outage impacting all user-facing components for over an hour, during which no data could be processed or accessed."
+  },
+  {
+    "id": "447beb0fbf95",
+    "company": "Okta",
+    "url": "https://www.okta.com/blog/2022/03/oktas-investigation-of-the-january-2022-compromise/",
+    "category": "Security",
+    "description": "An attacker group gained access to a third-party support engineer's laptop, leading to a security compromise investigation."
+  },
+  {
+    "id": "a99ddcab7afe",
+    "company": "OpenAI",
+    "url": "https://web.archive.org/web/20240426015133/https://openai.com/blog/march-20-chatgpt-outage",
+    "category": "Capacity/Overload",
+    "description": "Queues for requests and responses in a Redis cache became corrupted and out of sequence, leading to some requests revealing other users' data, including app activity and billing info."
+  },
+  {
+    "id": "ba6234a5f30a",
+    "company": "Salesforce",
+    "url": "https://help.salesforce.com/s/articleView?id=000396429&type=1",
+    "category": "Security",
+    "description": "A policy change executed as part of a standard security controls review inadvertently blocked access to resources beyond its intended scope, disrupting login and service access for a subset of customers."
+  },
+  {
+    "id": "34bd9baedde2",
+    "company": "Square",
+    "url": "https://web.archive.org/web/20210818034431/https://medium.com/square-corner-blog/incident-summary-2017-03-16-2f65be39297",
+    "category": "Capacity/Overload",
+    "description": "A cascading error from an adjacent service led to the merchant authentication service being overloaded, impacting merchants for about 2 hours."
+  },
+  {
+    "id": "a83f8add1a7e",
+    "company": "Etsy",
+    "url": "https://blog.etsy.com/news/2012/demystifying-site-outages/",
+    "category": "Database",
+    "description": "A deploy intended as a small bugfix also upgraded live databases on running production machines; an overflow in signed 32-bit integer IDs then caused database operations to fail, leading Etsy to take the site down during the upgrade."
+  },
+  {
+    "id": "8b10d201c180",
+    "company": "Dropbox",
+    "url": "https://blogs.dropbox.com/tech/2014/01/outage-post-mortem/",
+    "category": "Database",
+    "description": "A scheduled OS upgrade appears to have caused some machines to be wiped, which took out some databases."
+  },
+  {
+    "id": "098f611fc474",
+    "company": "Buildkite",
+    "url": "https://building.buildkite.com/outage-post-mortem-for-august-23rd-82b619a3679b",
+    "category": "Database",
+    "description": "A database capacity downgrade intended to minimize AWS spend resulted in insufficient capacity to support customers at peak load, leading to cascading collapse of dependent servers."
+  },
+  {
+    "id": "04a481f22719",
+    "company": "Duo",
+    "url": "https://status.duo.com/incidents/4w07bmvnt359",
+    "category": "Database",
+    "description": "A cascading failure occurred due to a request queue overloading existing, insufficient database capacity, attributed to inadequate capacity planning and monitoring."
+  },
+  {
+    "id": "c9de62517f87",
+    "company": "Foursquare",
+    "url": "https://web.archive.org/web/20230602082218/https://news.ycombinator.com/item?id=1769761",
+    "category": "Database",
+    "description": "MongoDB fell over under load when it ran out of memory due to a query pattern with low data locality, and a lack of monitoring let the load go undetected until it became catastrophic, causing 17 hours of downtime."
+  },
+  {
+    "id": "24407078a602",
+    "company": "Kickstarter",
+    "url": "https://web.archive.org/web/20170728131458/https://kickstarter.engineering/the-day-the-replication-died-e543ba45f262",
+    "category": "Database",
+    "description": "The primary database became inconsistent with all replicas, undetected until a query failed, caused by a MySQL bug that sometimes caused ORDER BY to be ignored."
+  },
+  {
+    "id": "a0aa73d201de",
+    "company": "Mandrill",
+    "url": "https://mailchimp.com/what-we-learned-from-the-recent-mandrill-outage/",
+    "category": "Database",
+    "description": "Transaction ID wraparound in Postgres caused a partial outage lasting a day and a half."
+  },
+  {
+    "id": "f61bd1cece1a",
+    "company": "Sentry",
+    "url": "https://blog.sentry.io/2015/07/23/transaction-id-wraparound-in-postgres",
+    "category": "Database",
+    "description": "Transaction ID wraparound in Postgres caused Sentry to go down for most of a working day."
+  },
+  {
+    "id": "882584558446",
+    "company": "Strava",
+    "url": "https://engineering.strava.com/the-upload-outage-of-july-29-2014/",
+    "category": "Database",
+    "description": "Strava hit the signed integer limit on a primary key, causing uploads to fail."
+  },
+  {
+    "id": "fc0e44a6434b",
+    "company": "Mailgun",
+    "url": "https://status.mailgun.com/incidents/p9nxxql8g9rh",
+    "category": "Database",
+    "description": "Secondary MongoDB servers became overloaded, and while troubleshooting, a change accidentally sent all secondary traffic to the primary MongoDB server, overloading it as well and worsening the outage."
+  },
+  {
+    "id": "bc3e4373a37f",
+    "company": "Stackdriver",
+    "url": "https://www.stackdriver.com/post-mortem-october-23-stackdriver-outage/",
+    "category": "Database",
+    "description": "A Cassandra cluster crashed, and the failure percolated to various data producers that ended up blocking on queue insert operations, eventually leading to failure of the entire application."
+  },
+  {
+    "id": "208770d2f535",
+    "company": "Joyent",
+    "url": "https://web.archive.org/web/20220528044329/https://www.joyent.com/blog/manta-postmortem-7-27-2015",
+    "category": "Database",
+    "description": "Operations on Manta were blocked because a lock could not be obtained on PostgreSQL metadata servers, due to transaction wraparound maintenance combined with a query that unnecessarily took a global lock."
+  },
+  {
+    "id": "16c9accc0b12",
+    "company": "Joyent",
+    "url": "https://web.archive.org/web/20220406095752/https://www.joyent.com/blog/postmortem-for-outage-of-us-east-1-may-27-2014",
+    "category": "Operational/Human Error",
+    "description": "An operator using a tool with lax input validation forgot a flag and rebooted all servers in a datacenter instead of a small maintenance subset, causing a 2.5 hour outage across all customer instances."
+  },
+  {
+    "id": "63e535d4f8e8",
+    "company": "Netflix",
+    "url": "https://netflixtechblog.com/post-mortem-of-october-22-2012-aws-degradation-efcee3ab40d5",
+    "category": "Operational/Human Error",
+    "description": "An EBS outage in one availability zone was mitigated by migrating workloads to other availability zones."
+  },
+  {
+    "id": "c2a97eaa5321",
+    "company": "Basecamp",
+    "url": "https://web.archive.org/web/20220529044310/https://m.signalvnoise.com/postmortem-on-the-read-only-outage-of-basecamp-on-november-9th-2018/",
+    "category": "Database",
+    "description": "A database hit an integer limit, leaving the service in read-only mode."
+  },
+  {
+    "id": "0f2d5c91a0eb",
+    "company": "Roblox",
+    "url": "https://blog.roblox.com/2022/01/roblox-return-to-service-10-28-10-31-2021/",
+    "category": "Operational/Human Error",
+    "description": "Roblox experienced a 73 hour outage due to issues with Consul streaming and BoltDB."
+  },
+  {
+    "id": "6ecf86458221",
+    "company": "Slack",
+    "url": "https://slack.engineering/slacks-outage-on-january-4th-2021/",
+    "category": "Networking",
+    "description": "Network saturation in cloud provider traffic gateways caused packet loss; an attempt to scale up capacity caused additional issues."
+  },
+  {
+    "id": "03d5ed463ac7",
+    "company": "Zerodha",
+    "url": "https://zerodha.com/marketintel/bulletin/229363/post-mortem-of-technical-issue-august-29-2019",
+    "category": "Operational/Human Error",
+    "description": "The Order Management System collapsed when a large order for a penny stock was divided into far more individual trades than typical, triggering a failure not previously encountered by the OMS provider."
+  }
+]
