@@ -12,12 +12,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Show checkout contents
+      - name: Debug checkout
         run: |
-          pwd
-          ls -la
-
+            echo "Branch:"
+            git branch --show-current
+            echo "Files:"
+            pwd
+            ls -la
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
