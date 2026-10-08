@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incident Postmortem Assistant</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6f8;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            width: 600px;
+            max-width: 90%;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .search {
+            display: flex;
+            gap: 10px;
+        }
+
+        input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        #answer {
+            margin-top: 25px;
+            padding: 15px;
+            background: #f7f7f7;
+            border-radius: 6px;
+            white-space: pre-wrap;
+            display: none;
+        }
+
+        #loading {
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Incident Postmortem Assistant</h2>
+
+    <div class="search">
+        <input
+            id="question"
+            type="text"
+            placeholder="Ask about an incident..."
+        >
+
+        <button onclick="askQuestion()">
+            Ask
+        </button>
+    </div>
+
+    <div id="loading">
+        Searching...
+    </div>
+
+    <div id="answer"></div>
+
+</div>
+
+
+<script>
+
+async function askQuestion() {
+
+    const question = document.getElementById("question").value;
+    const answerBox = document.getElementById("answer");
+    const loading = document.getElementById("loading");
+
+    if (!question.trim()) {
+        return;
+    }
+
+    loading.style.display = "block";
+    answerBox.style.display = "none";
+
+    try {
+
+        const response = await fetch("/ask", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                question: question
+            })
+        });
+
+        const data = await response.json();
+
+        answerBox.innerText =
+            typeof data === "string"
+                ? data
+                : JSON.stringify(data, null, 2);
+
+        answerBox.style.display = "block";
+
+    } catch (error) {
+
+        answerBox.innerText =
+            "Unable to get response.";
+
+        answerBox.style.display = "block";
+
+    }
+
+    loading.style.display = "none";
+}
+
+</script>
+
+</body>
+</html>
