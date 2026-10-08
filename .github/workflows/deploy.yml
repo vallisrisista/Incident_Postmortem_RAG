@@ -13,6 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Show checkout contents
+        run: |
+          pwd
+          ls -la
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -23,18 +28,43 @@ jobs:
       - name: Login to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v2
 
-      - name: Build and push Docker image
+      - name: Build Docker image
         run: |
           docker build \
             --platform linux/amd64 \
             -t 514632062606.dkr.ecr.us-east-1.amazonaws.com/incident-postmortem:latest \
             .
 
+      - name: Push Docker image
+        run: |
           docker push \
             514632062606.dkr.ecr.us-east-1.amazonaws.com/incident-postmortem:latest
 
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ec2-user
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            aws ecr get-login-password --region us-east-1 | \
+            docker login \
+              --username AWS \
+              --password-stdin \
+              514632062606.dkr.ecr.us-east-1.amazonaws.com
+
+            docker pull \
+              514632062606.dkr.ecr.us-east-1.amazonaws.com/incident-postmortem:latest
+
+            docker stop incident-postmortem || true
+            docker rm incident-postmortem || true
+
+            docker run -d \
+              --name incident-postmortem \
+              --restart unless-stopped \
+              -p 8000:8000 \
+              --env-file /home/ec2-user/.env \
+              514632062606.dkr.ecr.us-east-1.amazonaws.com/incident-postmortem:latest        uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ec2-user
