@@ -22,7 +22,7 @@
             max-width: 90%;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
 
         h2 {
@@ -56,6 +56,7 @@
             padding: 15px;
             background: #f7f7f7;
             border-radius: 6px;
+            line-height: 1.6;
             white-space: pre-wrap;
             display: none;
         }
@@ -93,20 +94,50 @@
 
 </div>
 
-
 <script>
 
+function formatAnswer(data) {
+
+    if (typeof data === "string") {
+        return data;
+    }
+
+    if (Array.isArray(data)) {
+        return data
+            .map((item, index) =>
+                `${index + 1}. ${formatAnswer(item)}`
+            )
+            .join("\n");
+    }
+
+    if (typeof data === "object" && data !== null) {
+        return Object.entries(data)
+            .map(([key, value]) => {
+
+                const label = key
+                    .replace(/_/g, " ")
+                    .replace(/\b\w/g, c => c.toUpperCase());
+
+                return `${label}:\n${formatAnswer(value)}`;
+            })
+            .join("\n\n");
+    }
+
+    return String(data);
+}
+
+
 async function askQuestion() {
-    answerBox.innerText = formatAnswer(data);
-    const question = document.getElementById("question").value;
+
+    const questionInput = document.getElementById("question");
     const answerBox = document.getElementById("answer");
     const loading = document.getElementById("loading");
-    const data = await response.json();
 
-    answerBox.innerText = JSON.stringify(data, null, 2);
-    answerBox.style.display = "block";
+    const question = questionInput.value.trim();
 
-    if (!question.trim()) {
+    if (!question) {
+        answerBox.innerText = "Please enter a question.";
+        answerBox.style.display = "block";
         return;
     }
 
@@ -125,46 +156,40 @@ async function askQuestion() {
             })
         });
 
+        if (!response.ok) {
+            throw new Error(`Request failed: ${response.status}`);
+        }
+
         const data = await response.json();
 
-        function formatAnswer(data) {
-    if (typeof data === "string") {
-        return data;
-    }
-
-    if (Array.isArray(data)) {
-        return data
-            .map((item, index) => `${index + 1}. ${formatAnswer(item)}`)
-            .join("\n");
-    }
-
-    if (typeof data === "object" && data !== null) {
-        return Object.entries(data)
-            .map(([key, value]) => {
-                const label = key
-                    .replace(/_/g, " ")
-                    .replace(/\b\w/g, c => c.toUpperCase());
-
-                return `${label}:\n${formatAnswer(value)}`;
-            })
-            .join("\n\n");
-    }
-
-    return String(data);
-}
+        answerBox.innerText = formatAnswer(data);
         answerBox.style.display = "block";
 
     } catch (error) {
 
+        console.error(error);
+
         answerBox.innerText =
-            "Unable to get response.";
+            "Unable to get response. Please try again.";
 
         answerBox.style.display = "block";
 
-    }
+    } finally {
 
-    loading.style.display = "none";
+        loading.style.display = "none";
+    }
 }
+
+
+/* Press Enter to search */
+document.getElementById("question").addEventListener(
+    "keydown",
+    function(event) {
+        if (event.key === "Enter") {
+            askQuestion();
+        }
+    }
+);
 
 </script>
 
