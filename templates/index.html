@@ -97,7 +97,7 @@
 <script>
 
 async function askQuestion() {
-
+    answerBox.innerText = formatAnswer(data);
     const question = document.getElementById("question").value;
     const answerBox = document.getElementById("answer");
     const loading = document.getElementById("loading");
@@ -123,11 +123,31 @@ async function askQuestion() {
 
         const data = await response.json();
 
-        answerBox.innerText =
-            typeof data === "string"
-                ? data
-                : JSON.stringify(data, null, 2);
+        function formatAnswer(data) {
+    if (typeof data === "string") {
+        return data;
+    }
 
+    if (Array.isArray(data)) {
+        return data
+            .map((item, index) => `${index + 1}. ${formatAnswer(item)}`)
+            .join("\n");
+    }
+
+    if (typeof data === "object" && data !== null) {
+        return Object.entries(data)
+            .map(([key, value]) => {
+                const label = key
+                    .replace(/_/g, " ")
+                    .replace(/\b\w/g, c => c.toUpperCase());
+
+                return `${label}:\n${formatAnswer(value)}`;
+            })
+            .join("\n\n");
+    }
+
+    return String(data);
+}
         answerBox.style.display = "block";
 
     } catch (error) {
