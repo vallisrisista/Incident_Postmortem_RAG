@@ -101,6 +101,10 @@ async function askQuestion() {
     const question = document.getElementById("question").value;
     const answerBox = document.getElementById("answer");
     const loading = document.getElementById("loading");
+    const data = await response.json();
+
+    answerBox.innerText = JSON.stringify(data, null, 2);
+    answerBox.style.display = "block";
 
     if (!question.trim()) {
         return;
